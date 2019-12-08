@@ -3,12 +3,6 @@
 
 #pragma once
 
-#include <iostream>
-#include <cstdint>
-#include <memory>
-#include <math.h>
 
-#include "Bitmap.h"
-#include "Mandelbrot.h"
-#include "ZoomList.h"
+#include "FractalCreator.h"
 // TODO: Reference additional headers your program requires here.
