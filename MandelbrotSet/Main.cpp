@@ -10,6 +10,11 @@ int main()
 	Bitmap bm(WIDTH, HEIGHT);
 	double min = 9999999;
 	double max = -9999999;
+	ZoomList zoomList(WIDTH, HEIGHT);
+
+	zoomList.add(Zoom(WIDTH / 2, HEIGHT / 2, 4. / WIDTH));
+	zoomList.add(Zoom(295, HEIGHT - 202, 0.1));
+	zoomList.add(Zoom(312, HEIGHT - 304, 0.1));
 
 	std::unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 });
 	std::unique_ptr<int[]> fractal(new int[WIDTH * HEIGHT]{ 0 });//foreach pixel, how many iterations?
@@ -21,12 +26,9 @@ int main()
 	{
 		for (int col = 0; col < WIDTH; col++)
 		{
-			//bm.setPixel(col, row, 255, 0, 0);
-			//std::uint8_t* p = bm.getPixel(col, row);
-			double xFractal = (col - WIDTH / 2 - 200) * 2.0 / HEIGHT;
-			double yFractal = (row - HEIGHT / 2) * 2.0 / HEIGHT;
 
-			int iterations = Mandelbrot::getIterations(xFractal, yFractal);
+			std::pair<double, double> coords = zoomList.doZoom(col, row);
+			int iterations = Mandelbrot::getIterations(coords.first, coords.second);
 			fractal[row * WIDTH + col] = iterations;
 			if (iterations != Mandelbrot::MAX_ITERATIONS)
 				histogram[iterations]++;
@@ -57,7 +59,7 @@ int main()
 				for (int i = 0; i <= iterations; i++) {
 					hue += ((double)histogram[i]) / total;
 				}
-				green = pow(255, hue);
+				red = pow(255, hue);
 
 			}
 			bm.setPixel(col, row, red, green, blue);
