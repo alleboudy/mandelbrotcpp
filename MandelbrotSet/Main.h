@@ -3,6 +3,6 @@
 
 #pragma once
 
-
+#include "RGB.h"
 #include "FractalCreator.h"
 // TODO: Reference additional headers your program requires here.

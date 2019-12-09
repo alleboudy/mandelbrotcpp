@@ -2,8 +2,16 @@
 
 
 namespace alleboudy {
-
-
+	void FractalCreator::addRange(double rangeEnd, const RGB& rgb)
+	{
+		m_ranges.push_back(rangeEnd * Mandelbrot::MAX_ITERATIONS);
+		m_colors.push_back(rgb);
+		if (m_bGotFirstRange)
+		{
+			m_rangeTotals.push_back(0);
+		}
+		m_bGotFirstRange = true;
+	}
 	FractalCreator::FractalCreator(int width, int height) :m_width(width), m_height(height),
 		m_histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 }),
 		m_fractal(new int[m_width * m_height]{ 0 }),
@@ -42,7 +50,9 @@ namespace alleboudy {
 	}
 	void FractalCreator::drawFractal()
 	{
-		
+		RGB startColor(0, 0, 0);
+		RGB endColor(255, 0, 0);
+		RGB colorDiff = endColor - startColor;
 		//coloring using the histogram
 		for (int row = 0; row < m_height; row++)
 		{
@@ -61,7 +71,11 @@ namespace alleboudy {
 					for (int i = 0; i <= iterations; i++) {
 						hue += ((double)m_histogram[i]) / m_total;
 					}
-					blue = pow(255, hue);
+					//blue = pow(255, hue);
+					red = startColor.r + colorDiff.r * hue;
+					green = startColor.g + colorDiff.g * hue;
+					blue = startColor.b + colorDiff.b * hue;
+
 
 				}
 				m_bitmap.setPixel(col, row, red, green, blue);
@@ -71,7 +85,7 @@ namespace alleboudy {
 		}
 	}
 	void FractalCreator::calculateTotalIterations()
-	{	
+	{
 		for (int i = 0; i < Mandelbrot::MAX_ITERATIONS; i++) {
 			m_total += m_histogram[i];
 		}
@@ -83,6 +97,14 @@ namespace alleboudy {
 	void FractalCreator::addZoom(const Zoom& zoom)
 	{
 		m_zoomList.add(zoom);
+	}
+	void FractalCreator::run(std::string fname)
+	{
+
+		calculateIteration();
+		calculateTotalIterations();
+		drawFractal();
+		writeBitmap("./tst.bmp");
 	}
 	;
 
