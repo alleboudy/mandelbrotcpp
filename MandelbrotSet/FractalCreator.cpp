@@ -69,10 +69,12 @@ namespace alleboudy {
 					for (int i = 0; i <= iterations; i++) {
 						hue += ((double)m_histogram[i]) / m_total;
 					}
-					//red = pow(255, hue);
-					red = startColor.r + colorDiff.r * hue;
-					green = startColor.g + colorDiff.g * hue;
-					blue = startColor.b + colorDiff.b * hue;
+					blue = pow(188, hue);
+					green = pow(140, hue);
+					red = pow(91, hue);
+					//red = startColor.r + colorDiff.r * hue;
+					//green = startColor.g + colorDiff.g * hue;
+					//blue = startColor.b + colorDiff.b * hue;
 
 
 				}

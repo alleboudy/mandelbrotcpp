@@ -6,7 +6,7 @@
 
 namespace alleboudy {
 
-	class Bitmap {
+	class ImageHandler {
 	private:
 		int m_width{ 0 };
 		int m_height{ 0 };
@@ -15,10 +15,10 @@ namespace alleboudy {
 		
 
 	public:
-		Bitmap(int width, int height);
+		ImageHandler(int width, int height);
 		bool write(std::string fname);
 		void setPixel(int x, int y, std::uint8_t red, std::uint8_t green, std::uint8_t blue);
 		std::uint8_t* getPixel(int x, int y);
-		virtual ~Bitmap();
+		virtual ~ImageHandler();
 	};
 }

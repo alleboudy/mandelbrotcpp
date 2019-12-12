@@ -19,7 +19,7 @@ namespace alleboudy {
 
 		std::unique_ptr<int[]> m_histogram;
 		std::unique_ptr<int[]> m_fractal;//foreach pixel, how many iterations?
-		Bitmap m_bitmap;
+		ImageHandler m_bitmap;
 		ZoomList m_zoomList;
 
 		std::vector<int> m_ranges;
