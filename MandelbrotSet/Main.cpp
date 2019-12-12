@@ -19,9 +19,9 @@ int main()
 	fractalCreator.addRange(0.5, RGB(255, 255, 0));
 	fractalCreator.addRange(1.0, RGB(255, 255, 255));
 
-	fractalCreator.addZoom(Zoom(295, 202, 0.1));
-	fractalCreator.addZoom(Zoom(312, 304, 0.1));
-	fractalCreator.run("./tst.bmp");
+	//fractalCreator.addZoom(Zoom(295, 202, 0.1));
+	//fractalCreator.addZoom(Zoom(312, 304, 0.1));
+	fractalCreator.run("./tst22.png");
 	cout << "finished" << endl;
 	return 0;
 }

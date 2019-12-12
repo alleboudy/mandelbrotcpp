@@ -19,7 +19,7 @@ namespace alleboudy {
 		m_zoomList(width, height)
 
 	{
-		m_zoomList.add(Zoom(m_width / 2, m_height / 2, 4. / m_width));
+		m_zoomList.add(Zoom(m_width / 2, m_height / 2, 3. / m_width));
 	}
 
 	FractalCreator::~FractalCreator()
@@ -42,8 +42,6 @@ namespace alleboudy {
 				m_fractal[row * m_width + col] = iterations;
 				if (iterations != Mandelbrot::MAX_ITERATIONS)
 					m_histogram[iterations]++;
-
-
 			}
 		}
 
@@ -71,7 +69,7 @@ namespace alleboudy {
 					for (int i = 0; i <= iterations; i++) {
 						hue += ((double)m_histogram[i]) / m_total;
 					}
-					//blue = pow(255, hue);
+					//red = pow(255, hue);
 					red = startColor.r + colorDiff.r * hue;
 					green = startColor.g + colorDiff.g * hue;
 					blue = startColor.b + colorDiff.b * hue;
@@ -104,7 +102,7 @@ namespace alleboudy {
 		calculateIteration();
 		calculateTotalIterations();
 		drawFractal();
-		writeBitmap("./tst.bmp");
+		writeBitmap(fname);
 	}
 	;
 

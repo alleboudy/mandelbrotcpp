@@ -14,7 +14,7 @@ namespace alleboudy {
 	}
 	std::pair<double, double> ZoomList::doZoom(int x, int y)
 	{
-		double xFractal = (x - m_width / 2) * m_scale + m_xCenter;
+		double xFractal = (x - m_width / 1.35) * m_scale + m_xCenter;
 		double yFractal = (y - m_height / 2) * m_scale + m_yCenter;
 		return std::pair<double, double>(xFractal, yFractal);
 	}

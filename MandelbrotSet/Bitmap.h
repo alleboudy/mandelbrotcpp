@@ -2,13 +2,16 @@
 #include <string>
 #include <cstdint>
 #include <memory>
+#include<opencv2/opencv.hpp>
+
 namespace alleboudy {
 
 	class Bitmap {
 	private:
 		int m_width{ 0 };
 		int m_height{ 0 };
-		std::unique_ptr<std::uint8_t[]> m_pPixels{ nullptr };
+		//std::unique_ptr<std::uint8_t[]> m_pPixels{ nullptr };
+		cv::Mat m_pPixels;
 		
 
 	public:

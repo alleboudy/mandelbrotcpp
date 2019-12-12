@@ -4,7 +4,6 @@
 #include <string>
 #include <math.h>
 #include <vector>
-#include "zoom.h"
 #include "Bitmap.h"
 #include "ZoomList.h"
 #include "Zoom.h"
