@@ -18,7 +18,6 @@ int main()
 	fractalCreator.addRange(0.3, RGB(255, 0, 0));
 	fractalCreator.addRange(0.5, RGB(255, 255, 0));
 	fractalCreator.addRange(1.0, RGB(255, 255, 255));
-
 	//fractalCreator.addZoom(Zoom(1024, 1024, 0.9));
 	//fractalCreator.addZoom(Zoom(312, 304, 0.1));
 	fractalCreator.run("./tst22.png");

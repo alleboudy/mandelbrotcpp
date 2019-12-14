@@ -32,8 +32,9 @@ namespace alleboudy {
 		void drawFractal();
 		void calculateTotalIterations();
 		void writeBitmap(std::string fname);
-
+		int getRange(int iteration) const;
 	public:
+		void calculateRangeTotals();
 		void addRange(double rangeEnd, const RGB& rgb);
 		FractalCreator(int width, int height);
 		void addZoom(const Zoom& zoom);
